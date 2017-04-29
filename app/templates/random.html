@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<center>
+    <img src="/static/images/champions/{{img}}.png"/>
+    <h1>{{name}}!!!!</h1>
+</center>
+<center>
+    <h5>{{quip}}</h5>
+</center>
+<center>
+        <p>
+            <a class="btn btn-lg btn-primary" href="{{link}}" role="button">Quick, get some build ideas!</a>
+        </p>
+    <p>Or, reroll below:</p>
+</center>
+{% endblock %}

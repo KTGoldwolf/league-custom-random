@@ -1,0 +1,83 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }} - Custom Random</title>
+    {% else %}
+    <title>Custom Random</title>
+    {% endif %}
+
+
+    <!-- Aww snap it's bootstrap -->
+         <!--<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/base.css') }}">-->
+   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/narrow.css') }}">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+   <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron customrandom">
+          <img class="banner" src="/static/images/logo.png"/>
+          <h1>Custom Random</h1>
+        <p class="lead">For when you want to play a random champion but, you know, like, not <i>too</i> random.</p>
+
+           <div class=""col-lg-6>
+                {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                    <ul>
+                      {% for message in messages %}
+                      <li>{{ message }} </li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                {% endwith %}
+                {% block content %}{% endblock %}
+        </div>
+        <p><a class="btn btn-lg btn-success btn-block custombtn"  role="button">Customize Random</a></p>
+          <div class="explain">
+              <p>
+                  Despite the point of this website being this section, I still haven't implemented it yet.
+              </p>
+              <p>
+                  Sorry!
+              </p>
+          </div>
+        <p><a class="btn btn-lg btn-info btn-block rolebtn" role="button">Random by Role</a></p>
+          <div class="rolerandom">
+              <p>
+                <a class="btn btn-primary" href="{{ url_for('marksman') }}" role="button">Marksman</a>
+                <a class="btn btn-primary" href="{{ url_for('mage') }}" role="button">Mage</a>
+                <a class="btn btn-primary" href="{{ url_for('tank') }}" role="button">Tank</a>
+                <a class="btn btn-primary" href="{{ url_for('support') }}" role="button">Support</a>
+                <a class="btn btn-primary" href="{{ url_for('fighter') }}" role="button">Fighter</a>
+                <a class="btn btn-primary" href="{{ url_for('assassin') }}" role="button">Assassin</a>
+              </p>
+          </div>
+        <p><a class="btn btn-lg btn-secondary btn-block" href="{{ url_for('random') }}" role="button">Pure Random</a></p>
+
+
+      </div>
+
+
+
+      <footer class="footer">
+        <p>This website isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. <br/> League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc..</p>
+      </footer>
+
+    </div>
+  </body>
+<script>
+    $( ".rolebtn" ).click(function() {
+        $(".rolerandom").slideToggle("fast");
+    });
+</script>
+<script>
+    $( ".custombtn" ).click(function() {
+        $(".explain").slideToggle("fast");
+    });
+</script>
+</html>
